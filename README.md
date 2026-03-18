@@ -52,6 +52,30 @@ Este projeto foi desenvolvido para a profissional **Helenice Moreira**, com o ob
 - CTA final  
 
 ---
+## 📈 Objetivo do projeto
+
+Este site foi pensado para:
+
+- apresentar a profissional com mais autoridade  
+- mostrar o tratamento de forma didática  
+- diminuir dúvidas do cliente  
+- aumentar o desejo de contato  
+- transformar visitantes em leads qualificados  
+
+---
+
+## 🔥 Diferenciais do projeto
+
+- layout premium e responsivo  
+- foco em conversão  
+- integração prática com WhatsApp  
+- design com forte apelo visual  
+- estrutura pronta para expansão  
+- fácil personalização para outros nichos  
+
+---
+
+
 
 ## 📲 Integração com WhatsApp
 
@@ -73,3 +97,8 @@ Abra o arquivo:
 index.html
 📸 Preview
 ![Preview do site](./preview.png)
+
+---
+## 👨‍💻 Desenvolvido por
+
+Desenvolvido por dUz00m🚀

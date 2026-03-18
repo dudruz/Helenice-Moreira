@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Helenice Moreira — Dermoterapeuta Capilar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+:root {
+  --r:      #7B1D1D;
+  --r2:     #9B2C2C;
+  --r3:     #5C1515;
+  --rp:     #FDF0F0;
+  --rp2:    #F5E4E4;
+  --ink:    #141414;
+  --stone:  #444;
+  --mist:   #777;
+  --silver: #AAA;
+  --cream:  #FAF8F5;
+  --bone:   #F2EEE8;
+  --linen:  #EAE5DC;
+  --white:  #FFF;
+  --border: #E2DDD6;
+  --border2:#D4CEC5;
+  --gold:   #B8863C;
+  --wa:     #25D366;
+  --wa2:    #1BB857;
+  --serif:  'Libre Baskerville', Georgia, serif;
+  --sans:   'Inter', system-ui, sans-serif;
+  --max:    1100px;
+  --max-w:  1120px;
+  --py:     clamp(80px, 10vw, 128px);
+  --r-easing: cubic-bezier(.22,1,.36,1);
+
+  /* Legacy tokens used elsewhere in the sheet */
+  --crimson: var(--r);
+  --crimson-mid: var(--r2);
+  --crimson-pale: var(--rp);
+  --charcoal: var(--ink);
+  --ash: var(--mist);
+  --font-serif: var(--serif);
+  --font-sans: var(--sans);
+}
+ 
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-weight: 300; font-size: 16px; line-height: 1.75;
+  color: var(--charcoal); background: var(--white); overflow-x: hidden;
+}
+ 
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border); transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 2px 28px rgba(0,0,0,.06); }
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+  height: 70px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 400; color: var(--charcoal); text-decoration: none; letter-spacing: .06em; }
+.nav-logo em { font-style: italic; color: var(--crimson); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: .74rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--crimson); }
+.nav-cta { background: var(--crimson) !important; color: var(--white) !important; padding: 9px 22px; border-radius: 1px; }
+.nav-cta:hover { background: var(--crimson-mid) !important; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: .3s; }
+.mob-menu {
+  position: fixed; inset: 0; background: var(--white); z-index: 190;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 36px; transform: translateX(100%); transition: transform .45s cubic-bezier(.77,0,.175,1);
+}
+.mob-menu.open { transform: none; }
+.mob-menu a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--charcoal); text-decoration: none; transition: color .2s; }
+.mob-menu a:hover { color: var(--crimson); }
+.mob-close { position: absolute; top: 20px; right: 28px; font-size: 2rem; background: none; border: none; cursor: pointer; color: var(--ash); }
+ 
+/* HERO */
+.hero{
+  min-height:100svh;padding-top:68px;
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--white);
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(48px,8vw,96px) clamp(24px,5vw,64px) clamp(48px,8vw,96px) clamp(24px,6vw,80px);
+}
+/* Urgency bar */
+.urgency-bar{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--rp);border:1px solid var(--rp2);
+  color:var(--r);font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 16px;border-radius:2px;margin-bottom:28px;
+  opacity:0;animation:fadeUp .7s .1s var(--r-easing) forwards;
+}
+.urgency-bar::before{content:'';width:7px;height:7px;background:var(--r);border-radius:50%;animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-h1{
+  font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:700;
+  line-height:1.15;color:var(--ink);margin-bottom:16px;
+  opacity:0;animation:fadeUp .8s .25s var(--r-easing) forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--r)}
+.hero-sub{
+  font-size:clamp(.95rem,1.5vw,1.08rem);color:var(--stone);line-height:1.75;
+  max-width:460px;margin-bottom:36px;
+  opacity:0;animation:fadeUp .8s .4s var(--r-easing) forwards;
+}
+.hero-btns{
+  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;
+  opacity:0;animation:fadeUp .8s .55s var(--r-easing) forwards;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--r);color:#fff;font-size:.8rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;padding:16px 32px;
+  border-radius:2px;border:2px solid var(--r);transition:background .2s,transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{background:var(--r2);border-color:var(--r2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(123,29,29,.3)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--ink);font-size:.8rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;
+  border-radius:2px;border:2px solid var(--border2);transition:border-color .2s,color .2s,transform .2s;
+}
+.btn-outline:hover{border-color:var(--r);color:var(--r);transform:translateY(-2px)}
+/* Social proof */
+.hero-proof{
+  display:flex;flex-wrap:wrap;gap:20px;
+  opacity:0;animation:fadeUp .8s .7s var(--r-easing) forwards;
+}
+.proof-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--stone)}
+.proof-check{width:20px;height:20px;background:var(--r);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.proof-check svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5}
+/* Hero right */
+.hero-right{
+  position:relative;background:var(--bone);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-visual{
+  width:100%;height:100%;
+  background:linear-gradient(165deg,#EDE7DC 0%,#DDD3C4 55%,#CDBFAF 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+}
+/* Hair SVG animation */
+.hero-hair-svg{opacity:0;animation:fadeIn 1.2s .6s forwards}
+@keyframes fadeIn{to{opacity:1}}
+/* Floating card */
+.hero-float-card{
+  position:absolute;bottom:32px;left:-2px;
+  background:var(--white);border:1px solid var(--border);
+  padding:16px 22px;display:flex;align-items:center;gap:14px;
+  box-shadow:0 12px 48px rgba(0,0,0,.1);
+  opacity:0;animation:fadeUp .8s 1.1s var(--r-easing) forwards;
+}
+.float-icon{width:36px;height:36px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.float-icon svg{width:16px;height:16px;stroke:var(--r);fill:none;stroke-width:2}
+.float-text strong{display:block;font-size:.84rem;font-weight:600;color:var(--ink);margin-bottom:2px}
+.float-text span{font-size:.72rem;color:var(--mist)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* FORM SECTION */
+.form-section{
+  background:var(--r);
+  padding:80px 24px;
+}
+.form-inner{
+  max-width:820px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+}
+.form-left .sec-label{color:rgba(255,255,255,.55)}
+.form-left .sec-label::before{background:rgba(255,255,255,.4)}
+.form-left .sec-title{color:#fff}
+.form-left .sec-title em{color:rgba(255,255,255,.7);font-style:italic}
+.form-left p{color:rgba(255,255,255,.7);font-size:.93rem;line-height:1.75}
+.form-card{
+  background:#fff;border-radius:4px;padding:36px 32px;
+  box-shadow:0 24px 80px rgba(0,0,0,.2);
+}
+.form-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.form-card p{font-size:.8rem;color:var(--mist);margin-bottom:24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);margin-bottom:7px}
+.form-group input,.form-group select{
+  width:100%;padding:13px 16px;
+  border:1.5px solid var(--border);border-radius:2px;
+  font-family:var(--sans);font-size:.9rem;color:var(--ink);
+  background:var(--white);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.form-group input:focus,.form-group select:focus{border-color:var(--r);box-shadow:0 0 0 3px rgba(123,29,29,.1)}
+.form-group input::placeholder{color:var(--silver)}
+.form-submit{
+  width:100%;padding:16px;background:var(--wa);color:#fff;
+  border:none;border-radius:2px;font-family:var(--sans);font-size:.82rem;
+  font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;
+}
+.form-submit:hover{background:var(--wa2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+.form-submit svg{width:18px;height:18px;fill:#fff}
+.form-privacy{font-size:.7rem;color:var(--silver);text-align:center;margin-top:12px}
+
+/* FAQ */
+.faq{background:var(--cream)}
+.faq-list{max-width:760px;margin:52px auto 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;background:none;border:none;text-align:left;font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--ink);transition:color .2s}
+.faq-btn:hover{color:var(--r)}
+.faq-arrow{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s,transform .35s var(--r-easing)}
+.faq-btn:hover .faq-arrow,.faq-item.open .faq-arrow{border-color:var(--r);background:var(--r)}
+.faq-arrow svg{width:12px;height:12px;stroke:var(--stone);fill:none;stroke-width:2.5;transition:stroke .2s,transform .35s}
+.faq-btn:hover .faq-arrow svg,.faq-item.open .faq-arrow svg{stroke:#fff}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .45s var(--r-easing)}
+.faq-body-inner{padding:0 0 22px;font-size:.9rem;color:var(--stone);line-height:1.8;max-width:640px}
+
+/* HAIR GROWTH DIVIDER */
+.hair-growth-section { overflow: hidden; background: var(--cream); }
+.hair-strip { width: 100%; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; height: 110px; }
+.strand-el { display: inline-block; border-radius: 2px 2px 0 0; transform-origin: bottom center; height: 0; }
+ 
+/* SECTIONS */
+section { padding: var(--py) 32px; }
+.container { max-width: var(--max-w); margin: 0 auto; }
+.sec-label { font-size: .68rem; font-weight: 400; letter-spacing: .26em; text-transform: uppercase; color: var(--crimson); display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.sec-label::before { content:''; display:block; width:26px; height:1px; background:var(--crimson); }
+.sec-title { font-family: var(--font-serif); font-size: clamp(1.9rem,3.2vw,2.8rem); font-weight: 300; line-height: 1.22; color: var(--charcoal); margin-bottom: 22px; }
+.sec-title em { font-style: italic; color: var(--crimson); }
+.rule { width: 44px; height: 1px; background: var(--crimson); margin-bottom: 32px; }
+ 
+/* ABOUT */
+.about { background: var(--cream); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,88px); align-items: center; }
+.about-img { position: relative; }
+.about-frame {
+  aspect-ratio: 4/5;
+  background: linear-gradient(150deg, #E8E0D4 0%, #D6CCC0 100%);
+  border-radius: 1px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-deco-border { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border: 1px solid var(--crimson); opacity: .2; pointer-events: none; }
+.about-deco-dot { position: absolute; top: 20px; left: -10px; width: 20px; height: 20px; background: var(--crimson); border-radius: 50%; opacity: .12; }
+.about-body p { color: var(--stone); font-size: .94rem; margin-bottom: 18px; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.tag { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--crimson); border: 1px solid rgba(123,29,29,.25); padding: 7px 16px; border-radius: 1px; }
+.about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--border); }
+.stat-n { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 300; color: var(--crimson); line-height: 1; margin-bottom: 5px; }
+.stat-l { font-size: .72rem; color: var(--ash); letter-spacing: .07em; line-height: 1.45; }
+ 
+/* APPROACH */
+.approach { background: var(--white); }
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,88px); align-items: start; }
+.approach-visual { background: var(--bone); border-radius: 1px; overflow: hidden; display: flex; flex-direction: column; }
+.approach-visual-top {
+  flex: 1; min-height: 320px;
+  background: linear-gradient(145deg, #EDE8DF 0%, #E0D8CC 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.approach-visual-bottom { padding: 32px; background: var(--crimson); color: rgba(255,255,255,.85); font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; line-height: 1.6; text-align: center; }
+.approach-body p { color: var(--stone); font-size: .94rem; margin-bottom: 18px; }
+.pillar { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--border); transition: transform .2s; }
+.pillar:first-of-type { border-top: 1px solid var(--border); }
+.pillar:hover { transform: translateX(4px); }
+.pillar-num { font-family: var(--font-serif); font-size: .75rem; font-weight: 600; color: var(--crimson); opacity: .5; min-width: 24px; padding-top: 2px; }
+.pillar h4 { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; margin-bottom: 5px; }
+.pillar p { font-size: .84rem; color: var(--stone); }
+ 
+/* SERVICES */
+.services { background: var(--cream); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 56px; }
+.service-card { background: var(--white); border: 1px solid var(--border); padding: 36px 30px; transition: border-color .25s, transform .2s, box-shadow .25s; cursor: default; }
+.service-card:hover { border-color: var(--crimson); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(123,29,29,.07); }
+.svc-icon { width: 46px; height: 46px; background: var(--crimson-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+.svc-icon svg { width: 20px; height: 20px; stroke: var(--crimson); fill: none; stroke-width: 1.4; }
+.service-card h4 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 500; margin-bottom: 10px; }
+.service-card p { font-size: .82rem; color: var(--stone); line-height: 1.7; }
+.svc-tag { display: inline-block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--crimson); border: 1px solid rgba(123,29,29,.2); padding: 4px 10px; border-radius: 1px; margin-top: 16px; }
+ 
+/* DIFFS */
+.diffs { background: var(--charcoal); }
+.diffs .sec-label { color: rgba(255,255,255,.4); }
+.diffs .sec-label::before { background: rgba(255,255,255,.3); }
+.diffs .sec-title { color: var(--white); }
+.diffs .rule { background: rgba(255,255,255,.25); }
+.diffs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 56px; }
+.diff-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); padding: 36px 32px; transition: background .25s, transform .2s; }
+.diff-card:hover { background: rgba(255,255,255,.07); transform: translateY(-2px); }
+.diff-num { font-family: var(--font-serif); font-size: .68rem; font-weight: 600; color: var(--crimson); letter-spacing: .2em; margin-bottom: 16px; opacity: .7; }
+.diff-card h4 { font-family: var(--font-serif); font-size: 1.02rem; color: var(--white); font-weight: 400; margin-bottom: 10px; }
+.diff-card p { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+ 
+/* GALLERY */
+.gallery { background: var(--cream); }
+.gallery-note { font-size: .79rem; color: var(--ash); font-style: italic; border-left: 2px solid var(--border); padding-left: 16px; margin-bottom: 48px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.gal-card { aspect-ratio: 3/4; background: linear-gradient(160deg, var(--bone) 0%, #DDD4C8 100%); border-radius: 1px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; transition: transform .3s; }
+.gal-card:hover { transform: translateY(-4px); }
+.gal-badge { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,.88); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); padding: 5px 12px; }
+.gal-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--ash); }
+.gal-placeholder svg { width: 28px; height: 28px; stroke: var(--ash); fill: none; stroke-width: 1; opacity: .4; }
+.gal-placeholder span { font-size: .7rem; letter-spacing: .12em; opacity: .55; }
+ 
+/* TESTIMONIALS */
+.testimonials { background: var(--white); }
+.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 56px; }
+.test-card { padding: 34px; background: var(--cream); border: 1px solid var(--border); border-radius: 1px; transition: box-shadow .25s, transform .2s; }
+.test-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,.05); transform: translateY(-2px); }
+.test-quote { font-family: var(--font-serif); font-size: 2.8rem; color: var(--crimson); opacity: .18; line-height: 1; margin-bottom: 12px; font-weight: 300; }
+.test-text { font-family: var(--font-serif); font-style: italic; font-size: .95rem; color: var(--stone); line-height: 1.75; margin-bottom: 24px; }
+ 
+/* AUDIO PLAYER */
+.audio-player {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 40px; padding: 10px 16px; margin-bottom: 20px;
+}
+.play-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--crimson); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .2s, transform .15s;
+}
+.play-btn:hover { background: var(--crimson-mid); transform: scale(1.06); }
+.play-btn svg { width: 12px; height: 12px; fill: white; margin-left: 2px; }
+.pause-icon { display: none; margin-left: 0 !important; }
+.audio-progress-wrap { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.progress-bar-bg { width: 100%; height: 4px; background: var(--border); border-radius: 2px; cursor: pointer; overflow: hidden; }
+.progress-bar-fill { height: 100%; width: 0%; background: var(--crimson); border-radius: 2px; transition: width .1s linear; }
+.audio-times { display: flex; justify-content: space-between; font-size: .65rem; color: var(--ash); }
+.audio-waves { display: flex; align-items: center; gap: 2px; margin-right: 4px; }
+.audio-waves span { display: block; width: 2px; background: var(--border); border-radius: 1px; transition: background .2s; }
+.audio-waves span:nth-child(1) { height: 8px; }
+.audio-waves span:nth-child(2) { height: 14px; }
+.audio-waves span:nth-child(3) { height: 10px; }
+.audio-waves span:nth-child(4) { height: 16px; }
+.audio-waves span:nth-child(5) { height: 8px; }
+.audio-player.playing .audio-waves span { background: var(--crimson); animation: wave .8s ease-in-out infinite; }
+.audio-player.playing .audio-waves span:nth-child(1) { animation-delay: 0s; }
+.audio-player.playing .audio-waves span:nth-child(2) { animation-delay: .1s; }
+.audio-player.playing .audio-waves span:nth-child(3) { animation-delay: .2s; }
+.audio-player.playing .audio-waves span:nth-child(4) { animation-delay: .05s; }
+.audio-player.playing .audio-waves span:nth-child(5) { animation-delay: .15s; }
+@keyframes wave { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(1.8); } }
+ 
+.test-author { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--border); }
+.author-av { width: 38px; height: 38px; background: var(--bone); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); color: var(--ash); font-size: .95rem; }
+.author-nm { font-size: .83rem; font-weight: 500; margin-bottom: 2px; }
+.author-dt { font-size: .72rem; color: var(--ash); }
+.stars { color: var(--gold); font-size: .72rem; letter-spacing: 2px; margin-bottom: 3px; }
+ 
+/* CTA FINAL */
+.cta-final { background: var(--bone); text-align: center; }
+.cta-final .container { max-width: 680px; }
+.cta-eyebrow { font-size: .68rem; letter-spacing: .26em; text-transform: uppercase; color: var(--crimson); display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 22px; }
+.cta-eyebrow::before, .cta-eyebrow::after { content:''; display:block; width:36px; height:1px; background:var(--crimson); opacity:.5; }
+.cta-final p { color: var(--stone); max-width: 500px; margin: 0 auto 44px; font-size: .95rem; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366; color: #fff; font-family: var(--font-sans);
+  font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  padding: 15px 34px; border-radius: 1px; transition: background .25s, transform .2s;
+}
+.btn-wa:hover { background: #1fbc59; transform: translateY(-1px); }
+.btn-wa svg { width: 17px; height: 17px; fill: white; flex-shrink: 0; }
+ 
+/* FOOTER */
+footer { background: #111; color: rgba(255,255,255,.55); padding: 60px 32px 28px; }
+.footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 28px; }
+.f-name { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 300; color: var(--white); margin-bottom: 10px; }
+.f-name em { font-style: italic; color: var(--crimson); }
+.f-tagline { font-size: .8rem; line-height: 1.75; max-width: 270px; }
+.f-col h5 { font-size: .68rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 18px; }
+.f-col ul { list-style: none; }
+.f-col ul li { margin-bottom: 11px; }
+.f-col ul li a { font-size: .83rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+.f-col ul li a:hover { color: var(--white); }
+.f-contact { display: flex; align-items: center; gap: 10px; font-size: .83rem; margin-bottom: 13px; }
+.f-contact svg { width: 15px; height: 15px; stroke: var(--crimson); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+.f-contact a { color: inherit; text-decoration: none; transition: color .2s; }
+.f-contact a:hover { color: var(--white); }
+.socials { display: flex; gap: 12px; margin-top: 22px; }
+.soc-link { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: border-color .2s, background .2s; }
+.soc-link:hover { border-color: var(--crimson); background: rgba(123,29,29,.25); }
+.soc-link svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.45); fill: none; stroke-width: 1.5; }
+.footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; font-size: .72rem; color: rgba(255,255,255,.2); flex-wrap: wrap; gap: 8px; }
+ 
+/* ANIMATIONS */
+@keyframes up { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:none; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes drawStrand { to { stroke-dashoffset: 0; } }
+@keyframes growUp {
+  from { height: 0; opacity: 0; }
+  to   { opacity: 1; }
+}
+.reveal { opacity:0; transform:translateY(24px); transition: opacity .8s, transform .8s; }
+.reveal.visible { opacity:1; transform:none; }
+.d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
+ 
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { height: 52vw; min-height: 280px; }
+  .hero-badge { bottom: 18px; left: 18px; }
+  .about-grid, .approach-grid { grid-template-columns: 1fr; }
+  .about-img { max-width: 380px; }
+  .diffs-grid { grid-template-columns: repeat(2,1fr); }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+  .gallery-grid .gal-card:last-child { display: none; }
+  .test-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .nav-links { display: none; }
+  .burger { display: flex; }
+}
+@media (max-width: 600px) {
+  section { padding: 60px 20px; }
+  .hero-left { padding: 36px 20px; }
+  .diffs-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid .gal-card:last-child { display: flex; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Helenice <em>Moreira</em></a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#abordagem">Abordagem</a></li>
+      <li><a href="#servicos">Tratamentos</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="https://wa.me/5531998283254" target="_blank" class="nav-cta">Agendar</a></li>
+    </ul>
+    <div class="burger" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMob()">×</button>
+  <a href="#sobre" onclick="toggleMob()">Sobre</a>
+  <a href="#abordagem" onclick="toggleMob()">Abordagem</a>
+  <a href="#servicos" onclick="toggleMob()">Tratamentos</a>
+  <a href="#depoimentos" onclick="toggleMob()">Depoimentos</a>
+  <a href="https://wa.me/5531998283254" target="_blank" style="color:var(--crimson)">Agendar</a>
+</div>
+ 
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="urgency-bar">Vagas limitadas por semana</div>
+
+    <h1 class="hero-h1">
+      Queda de cabelo,<br>falhas ou problemas<br>no <em>couro cabeludo?</em>
+    </h1>
+    <p class="hero-sub">Descubra o tratamento ideal para o seu caso com avaliação especializada. Dermoterapia capilar com abordagem integrativa — cuidado de dentro para fora.</p>
+
+    <div class="hero-btns">
+      <a href="#agendamento" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Agendar minha avaliação
+      </a>
+      <a href="#servicos" class="btn-outline">Conhecer tratamentos</a>
+    </div>
+
+    <div class="hero-proof">
+      <div class="proof-item">
+        <div class="proof-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        +500 pacientes atendidas
+      </div>
+      <div class="proof-item">
+        <div class="proof-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        Atendimento individualizado
+      </div>
+      <div class="proof-item">
+        <div class="proof-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        Resultados reais comprovados
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <!-- Animated hair SVG -->
+      <svg class="hero-hair-svg" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" style="width:min(240px,72%);opacity:.32">
+        <defs>
+          <style>
+            .hs{stroke-dasharray:320;stroke-dashoffset:320}
+            .h1{animation:ds 2.8s .15s ease forwards}
+            .h2{animation:ds 2.8s .4s ease forwards}
+            .h3{animation:ds 2.8s .65s ease forwards}
+            .h4{animation:ds 2.8s .9s ease forwards}
+            .h5{animation:ds 2.8s 1.1s ease forwards}
+            .h6{animation:ds 2.8s .3s ease forwards}
+            .h7{animation:ds 2.8s .55s ease forwards}
+            @keyframes ds{to{stroke-dashoffset:0}}
+          </style>
+        </defs>
+        <ellipse cx="130" cy="288" rx="80" ry="9" fill="#B8A898" opacity=".35"/>
+        <path class="hs h1" d="M130 288 C128 255 135 225 128 188 C122 155 129 120 127 82 C125 48 131 20 133 3" fill="none" stroke="#7B1D1D" stroke-width="3" stroke-linecap="round"/>
+        <path class="hs h2" d="M115 286 C109 253 115 222 107 185 C101 152 106 118 100 81 C95 48 99 21 102 4" fill="none" stroke="#9B2C2C" stroke-width="2.3" stroke-linecap="round"/>
+        <path class="hs h3" d="M145 286 C149 252 145 220 153 183 C159 150 155 116 160 79 C164 46 160 20 158 4" fill="none" stroke="#7B1D1D" stroke-width="2.3" stroke-linecap="round"/>
+        <path class="hs h4" d="M100 284 C93 250 96 217 86 181 C78 148 81 115 72 79 C65 48 67 22 70 5" fill="none" stroke="#B8863C" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+        <path class="hs h5" d="M160 284 C166 249 163 215 172 179 C179 146 176 113 183 76 C189 45 187 20 184 4" fill="none" stroke="#B8863C" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+        <path class="hs h6" d="M84 281 C76 246 78 212 68 176 C60 144 62 111 53 76 C46 46 47 21 50 5" fill="none" stroke="#7B1D1D" stroke-width="1.1" stroke-linecap="round" opacity=".3"/>
+        <path class="hs h7" d="M176 281 C183 245 180 211 190 175 C197 142 195 109 203 74 C209 44 207 19 204 4" fill="none" stroke="#7B1D1D" stroke-width="1.1" stroke-linecap="round" opacity=".3"/>
+        <circle cx="130" cy="288" r="4" fill="#7B1D1D" opacity=".4"/>
+        <circle cx="115" cy="286" r="3" fill="#7B1D1D" opacity=".28"/>
+        <circle cx="145" cy="286" r="3" fill="#7B1D1D" opacity=".28"/>
+      </svg>
+      <p style="font-family:var(--serif);font-style:italic;color:#B0A090;font-size:.88rem">Foto Profissional</p>
+    </div>
+    <div class="hero-float-card">
+      <div class="float-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="float-text">
+        <strong>Abordagem Integrativa</strong>
+        <span>Saúde capilar de dentro para fora</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HAIR GROWTH DIVIDER (fios crescendo como transição) -->
+<div class="hair-growth-section">
+  <div class="hair-strip" id="hairStrip"></div>
+</div>
+ 
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <div class="about-frame">
+          <div class="gal-placeholder"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span style="font-size:.78rem;letter-spacing:.1em;">Helenice Moreira</span></div>
+        </div>
+        <div class="about-deco-border"></div>
+        <div class="about-deco-dot"></div>
+      </div>
+      <div class="about-body reveal d2">
+        <p class="sec-label">Sobre a profissional</p>
+        <h2 class="sec-title">Técnica, <em>cuidado</em><br>e visão integrativa</h2>
+        <div class="rule"></div>
+        <p>Helenice Moreira é dermoterapeuta capilar com formação especializada em terapias integrativas voltadas à saúde e ao bem-estar do cabelo e do couro cabeludo. Sua atuação une o rigor clínico ao olhar humanizado, reconhecendo que a saúde capilar está profundamente conectada ao equilíbrio do organismo como um todo.</p>
+        <p>Em cada atendimento, Helenice realiza uma avaliação criteriosa para compreender o histórico, as necessidades e os objetivos de cada pessoa. Somente a partir desse entendimento os protocolos são definidos — com responsabilidade, precisão e cuidado genuíno.</p>
+        <p>Seu compromisso vai além dos resultados visíveis: é com a saúde, o bem-estar e a experiência de cada paciente em um ambiente de confiança e excelência.</p>
+        <div class="about-tags">
+          <span class="tag">Dermoterapia Capilar</span>
+          <span class="tag">Terapias Integrativas</span>
+          <span class="tag">Couro Cabeludo</span>
+          <span class="tag">Bem-estar Capilar</span>
+        </div>
+        <div class="about-stats">
+          <div><div class="stat-n">5+</div><div class="stat-l">Anos de atuação especializada</div></div>
+          <div><div class="stat-n">500+</div><div class="stat-l">Pacientes acompanhadas</div></div>
+          <div><div class="stat-n">100%</div><div class="stat-l">Atendimento individualizado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORMULÁRIO / AGENDAMENTO ══ -->
+<section class="form-section" id="agendamento">
+  <div class="form-inner">
+    <div class="form-left reveal">
+      <p class="sec-label">Agendamento</p>
+      <h2 class="sec-title">Dê o primeiro<br>passo para a sua<br><em>saúde capilar</em></h2>
+      <div class="divider" style="background:rgba(255,255,255,.3)"></div>
+      <p>Preencha o formulário e você será direcionada para uma conversa personalizada no WhatsApp. Sem compromisso — apenas uma avaliação cuidadosa para entender o seu caso.</p>
+    </div>
+
+    <div class="form-card reveal d2">
+      <h3>Solicitar avaliação gratuita</h3>
+      <p>Responda em 3 campos e receba contato personalizado</p>
+
+      <form id="schedForm" onsubmit="sendToWA(event)">
+        <div class="form-group">
+          <label for="fname">Seu nome</label>
+          <input type="text" id="fname" placeholder="Como posso te chamar?" required autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="fphone">Telefone / WhatsApp</label>
+          <input type="tel" id="fphone" placeholder="(31) 9 9999-9999" required autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="fqueixa">Principal queixa</label>
+          <select id="fqueixa" required>
+            <option value="" disabled selected>Selecione sua queixa</option>
+            <option>Queda de cabelo</option>
+            <option>Falhas capilares</option>
+            <option>Oleosidade excessiva</option>
+            <option>Caspa / descamação</option>
+            <option>Coceira ou sensibilidade</option>
+            <option>Enfraquecimento dos fios</option>
+            <option>Crescimento lento</option>
+            <option>Quero avaliação completa</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.5 6.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.118 1.534 5.851L.057 23.012a.75.75 0 0 0 .916.945l5.451-1.476A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Enviar e ir para o WhatsApp
+        </button>
+        <p class="form-privacy">🔒 Seus dados são usados apenas para o contato. Sem spam.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ABORDAGEM -->
+<section class="approach" id="abordagem">
+  <div class="container">
+    <div class="approach-grid">
+      <div class="approach-visual reveal">
+        <div class="approach-visual-top">
+          <!-- Hair strands growing SVG animado -->
+          <svg viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" style="width:100px;">
+            <defs>
+              <style>
+                .sa { stroke-dasharray: 220; stroke-dashoffset: 220; animation: drawS 2.2s ease forwards; }
+                .sb { stroke-dasharray: 220; stroke-dashoffset: 220; animation: drawS 2.2s .35s ease forwards; }
+                .sc { stroke-dasharray: 220; stroke-dashoffset: 220; animation: drawS 2.2s .7s ease forwards; }
+                .sd { stroke-dasharray: 220; stroke-dashoffset: 220; animation: drawS 2.2s 1.05s ease forwards; }
+                .se { stroke-dasharray: 220; stroke-dashoffset: 220; animation: drawS 2.2s 1.4s ease forwards; }
+                @keyframes drawS { to { stroke-dashoffset: 0; } }
+              </style>
+            </defs>
+            <ellipse cx="60" cy="170" rx="45" ry="7" fill="#C4B4A0" opacity=".4"/>
+            <path class="sa" d="M60 170 C58 140 64 115 57 80 C51 50 58 22 60 4" fill="none" stroke="#7B1D1D" stroke-width="3" stroke-linecap="round"/>
+            <path class="sb" d="M48 168 C43 138 48 112 40 78 C34 48 38 22 41 5" fill="none" stroke="#9B2C2C" stroke-width="2.2" stroke-linecap="round"/>
+            <path class="sc" d="M72 168 C75 138 72 110 78 76 C83 46 79 20 77 4" fill="none" stroke="#7B1D1D" stroke-width="2.2" stroke-linecap="round"/>
+            <path class="sd" d="M36 165 C30 134 32 106 22 72 C15 42 17 17 20 3" fill="none" stroke="#C4965A" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+            <path class="se" d="M84 165 C90 134 88 105 96 71 C102 40 100 16 97 2" fill="none" stroke="#C4965A" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+            <circle cx="60" cy="170" r="4" fill="#7B1D1D" opacity=".35"/>
+            <circle cx="48" cy="168" r="3" fill="#7B1D1D" opacity=".25"/>
+            <circle cx="72" cy="168" r="3" fill="#7B1D1D" opacity=".25"/>
+          </svg>
+        </div>
+        <div class="approach-visual-bottom">
+          "O cuidado verdadeiro começa pela escuta e vai além do que os olhos enxergam."
+        </div>
+      </div>
+      <div class="reveal d2">
+        <p class="sec-label">Nossa abordagem</p>
+        <h2 class="sec-title">Cuidado que vai <em>além</em><br>da estética</h2>
+        <div class="rule"></div>
+        <p style="color:var(--stone);font-size:.94rem;margin-bottom:18px;">A dermoterapia capilar integrativa considera a saúde do cabelo como um reflexo do equilíbrio interno do corpo. O tratamento não começa pelo produto — começa pela pessoa.</p>
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div><h4>Avaliação capilar completa</h4><p>Análise do couro cabeludo, histórico de saúde, hábitos e objetivos do paciente antes de qualquer protocolo.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div><h4>Visão integrativa</h4><p>Consideramos fatores internos — nutrição, estresse, hormônios — que impactam diretamente a saúde dos fios e do couro cabeludo.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div><h4>Protocolo individualizado</h4><p>Cada pessoa recebe uma conduta personalizada, com produtos e técnicas selecionados especificamente para seu quadro.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div><h4>Acompanhamento responsável</h4><p>O processo é acompanhado de perto, com orientações claras e ajustes sempre que necessário para os melhores resultados.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="sec-label" style="justify-content:center;">Tratamentos</p>
+      <h2 class="sec-title">Serviços <em>especializados</em></h2>
+      <div class="rule" style="margin: 0 auto 0;"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2c-5.33 4-8 8-8 12a8 8 0 0 0 16 0c0-4-2.67-8-8-12z"/></svg></div>
+        <h4>Terapia Capilar Avançada</h4>
+        <p>Tratamento clínico focado na recuperação, fortalecimento e equilíbrio dos fios e do couro cabeludo com protocolos especializados.</p>
+        <span class="svc-tag">Tratamento principal</span>
+      </div>
+      <div class="service-card reveal d1">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <h4>Avaliação Capilar</h4>
+        <p>Análise completa do couro cabeludo, estrutura dos fios e fatores que influenciam a saúde capilar — base de todo o tratamento.</p>
+        <span class="svc-tag">Ponto de partida</span>
+      </div>
+      <div class="service-card reveal d2">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4>Cuidados com Couro Cabeludo</h4>
+        <p>Limpeza profunda, regulação da oleosidade, alívio de descamação e inflamações com técnicas e produtos específicos.</p>
+        <span class="svc-tag">Saúde capilar</span>
+      </div>
+      <div class="service-card reveal d3">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>Microagulhamento Capilar</h4>
+        <p>Estimulação da microcirculação local para favorecer a absorção de ativos e o crescimento saudável dos fios.</p>
+        <span class="svc-tag">Tratamento avançado</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Terapias Integrativas</h4>
+        <p>Abordagens complementares que consideram o equilíbrio do organismo como um todo na promoção da saúde capilar.</p>
+        <span class="svc-tag">Visão integrativa</span>
+      </div>
+      <div class="service-card reveal d1">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <h4>Acompanhamento Contínuo</h4>
+        <p>Suporte durante o tratamento, orientações de cuidados em casa e ajustes de protocolo conforme a evolução.</p>
+        <span class="svc-tag">Contínuo</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-label">Galeria de resultados</p>
+      <h2 class="sec-title">Evolução <em>real</em> das pacientes</h2>
+      <div class="rule"></div>
+      <p class="gallery-note">Os resultados individuais podem variar conforme histórico de saúde e aderência ao protocolo indicado. Imagens de casos reais com acompanhamento completo.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gal-card reveal"><div class="gal-badge">Antes · Depois</div><div class="gal-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Resultado — Caso 01</span></div></div>
+      <div class="gal-card reveal d2"><div class="gal-badge">Antes · Depois</div><div class="gal-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Resultado — Caso 02</span></div></div>
+      <div class="gal-card reveal d4"><div class="gal-badge">Antes · Depois</div><div class="gal-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Resultado — Caso 03</span></div></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- DIFERENCIAIS -->
+<section class="diffs" id="diferenciais">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="sec-label" style="justify-content:center;">Por que escolher</p>
+      <h2 class="sec-title">Nossos <em>diferenciais</em></h2>
+      <div class="rule" style="margin:0 auto;"></div>
+    </div>
+    <div class="diffs-grid">
+      <div class="diff-card reveal"><div class="diff-num">01</div><h4>Atendimento personalizado</h4><p>Cada paciente é única. O protocolo é construído exclusivamente a partir da sua avaliação individual, histórico e objetivos.</p></div>
+      <div class="diff-card reveal d1"><div class="diff-num">02</div><h4>Visão integrativa</h4><p>O cuidado capilar é tratado como parte da saúde global. Consideramos todos os fatores que impactam os fios e o couro cabeludo.</p></div>
+      <div class="diff-card reveal d2"><div class="diff-num">03</div><h4>Ambiente seguro e higienizado</h4><p>Espaço clínico com rigorosos protocolos de assepsia, organização e biossegurança para a sua total tranquilidade.</p></div>
+      <div class="diff-card reveal d3"><div class="diff-num">04</div><h4>Protocolos profissionais</h4><p>Técnicas e produtos selecionados com critério técnico, atualizados e adequados para cada tipo de condição capilar.</p></div>
+      <div class="diff-card reveal"><div class="diff-num">05</div><h4>Experiência acolhedora</h4><p>Um atendimento que alia rigor clínico à sensibilidade humana, criando um ambiente de confiança desde a primeira consulta.</p></div>
+      <div class="diff-card reveal d1"><div class="diff-num">06</div><h4>Foco em resultados reais</h4><p>Compromisso com resultados éticos, progressivos e sustentáveis — sem promessas exageradas, com transparência total.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="sec-label" style="justify-content:center;">Depoimentos em áudio</p>
+      <h2 class="sec-title">Experiências <em>reais</em></h2>
+      <p style="color:var(--stone);font-size:.9rem;max-width:480px;margin:0 auto 16px;">Ouça o que nossas pacientes têm a dizer sobre o tratamento e o atendimento.</p>
+    </div>
+    <div class="test-grid">
+ 
+      <!-- CARD 1 -->
+      <div class="test-card reveal">
+        <div class="test-quote">"</div>
+        <!--
+          COMO USAR O PLAYER DE ÁUDIO:
+          1. Coloque o arquivo de áudio na mesma pasta do site
+          2. Substitua "depoimento-1.mp3" pelo nome real do seu arquivo
+          3. Formatos suportados: .mp3, .ogg, .wav, .m4a
+        -->
+        <div class="audio-player" id="player1">
+          <audio id="audio1" src="depoimento-1.mp3" preload="none"></audio>
+          <button class="play-btn" id="btn1" onclick="togglePlay(1)">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <div class="audio-waves"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="audio-progress-wrap">
+            <div class="progress-bar-bg" onclick="seekAudio(event,1)">
+              <div class="progress-bar-fill" id="fill1"></div>
+            </div>
+            <div class="audio-times"><span id="cur1">0:00</span><span id="dur1">--:--</span></div>
+          </div>
+        </div>
+        <p class="test-text">Desde a primeira avaliação me senti segura e bem cuidada. A Helenice explica cada passo com clareza e atenção. Os resultados vieram aos poucos, do jeito certo.</p>
+        <div class="test-author">
+          <div class="author-av">A</div>
+          <div><div class="stars">★★★★★</div><div class="author-nm">Ana C.</div><div class="author-dt">Terapia capilar · 4 meses</div></div>
+        </div>
+      </div>
+ 
+      <!-- CARD 2 -->
+      <div class="test-card reveal d2">
+        <div class="test-quote">"</div>
+        <div class="audio-player" id="player2">
+          <audio id="audio2" src="depoimento-2.mp3" preload="none"></audio>
+          <button class="play-btn" id="btn2" onclick="togglePlay(2)">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <div class="audio-waves"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="audio-progress-wrap">
+            <div class="progress-bar-bg" onclick="seekAudio(event,2)">
+              <div class="progress-bar-fill" id="fill2"></div>
+            </div>
+            <div class="audio-times"><span id="cur2">0:00</span><span id="dur2">--:--</span></div>
+          </div>
+        </div>
+        <p class="test-text">O que mais me impressionou foi a seriedade e o cuidado genuíno. O ambiente transmite higiene e confiança, e o protocolo foi totalmente pensado para a minha realidade.</p>
+        <div class="test-author">
+          <div class="author-av">F</div>
+          <div><div class="stars">★★★★★</div><div class="author-nm">Fernanda R.</div><div class="author-dt">Couro cabeludo · 3 meses</div></div>
+        </div>
+      </div>
+ 
+      <!-- CARD 3 -->
+      <div class="test-card reveal d4">
+        <div class="test-quote">"</div>
+        <div class="audio-player" id="player3">
+          <audio id="audio3" src="depoimento-3.mp3" preload="none"></audio>
+          <button class="play-btn" id="btn3" onclick="togglePlay(3)">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <div class="audio-waves"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="audio-progress-wrap">
+            <div class="progress-bar-bg" onclick="seekAudio(event,3)">
+              <div class="progress-bar-fill" id="fill3"></div>
+            </div>
+            <div class="audio-times"><span id="cur3">0:00</span><span id="dur3">--:--</span></div>
+          </div>
+        </div>
+        <p class="test-text">A abordagem integrativa fez toda a diferença. Nunca imaginei que o tratamento do cabelo consideraria tantos aspectos da minha saúde. Me sinto cuidada de verdade.</p>
+        <div class="test-author">
+          <div class="author-av">L</div>
+          <div><div class="stars">★★★★★</div><div class="author-nm">Letícia M.</div><div class="author-dt">Terapia integrativa · 6 meses</div></div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="sec-label" style="justify-content:center;">Perguntas frequentes</p>
+      <h2 class="sec-title">Tire suas <em>dúvidas</em></h2>
+      <div class="divider" style="margin:0 auto 0;"></div>
+    </div>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          O tratamento dói?
+          <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">Os procedimentos são realizados com muito cuidado e, na maioria dos casos, causam apenas um leve desconforto. O microagulhamento capilar, por exemplo, utiliza agulhas finíssimas e pode gerar uma sensação leve de formigamento na região tratada. A avaliação individual permite que o protocolo seja adaptado à sensibilidade de cada paciente.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Em quanto tempo vejo resultado?
+          <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">Os resultados variam conforme o tipo de condição, a causa da queixa e a aderência ao protocolo. Em geral, muitas pacientes começam a notar redução da queda e melhora no couro cabeludo entre 4 a 8 semanas. Para resultados mais expressivos em volume e crescimento, o processo é progressivo e pode levar de 3 a 6 meses de acompanhamento.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Funciona para qualquer tipo de queda?
+          <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">Existem diferentes tipos e causas de queda capilar — hormonal, genética, por deficiência nutricional, por estresse, pós-parto, entre outros. Por isso, a avaliação inicial é fundamental: ela permite identificar a causa real e definir o protocolo mais adequado. Tratamos diversas causas, mas sempre com honestidade sobre as expectativas de cada caso.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Precisa de manutenção após o tratamento?
+          <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">Sim, em muitos casos o acompanhamento periódico ajuda a manter e potencializar os resultados alcançados. A frequência das sessões de manutenção é definida individualmente. Além disso, você receberá orientações completas sobre cuidados em casa que fazem parte do protocolo e contribuem para a sustentação dos resultados.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Como funciona a primeira avaliação?
+          <div class="faq-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner">A primeira avaliação é uma consulta completa onde analisamos o couro cabeludo, levantamos seu histórico de saúde, rotina capilar, hábitos alimentares e outros fatores que influenciam a saúde dos fios. Com base nisso, definimos juntas o protocolo mais adequado para o seu caso, com transparência e sem compromisso imediato.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:44px">
+      <a href="#agendamento" class="btn-primary" style="display:inline-flex">Ainda tem dúvidas? Fale comigo →</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="reveal">
+      <p class="cta-eyebrow">Próximo passo</p>
+      <h2 class="sec-title">Agende sua <em>avaliação</em></h2>
+      <p>Agende sua avaliação e conheça um cuidado capilar pensado com técnica, atenção e segurança. O primeiro passo é uma conversa — sem compromisso, com total dedicação à sua saúde.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5531998283254" target="_blank" class="btn-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.5 6.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.118 1.534 5.851L.057 23.012a.75.75 0 0 0 .916.945l5.451-1.476A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="#sobre" class="btn-s">Conhecer mais</a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-name">Helenice <em>Moreira</em></div>
+      <p class="f-tagline">Dermoterapeuta capilar com abordagem integrativa. Cuidado especializado em saúde e bem-estar capilar de dentro para fora.</p>
+      <div class="socials">
+        <a href="https://instagram.com/" target="_blank" class="soc-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/5531998283254" target="_blank" class="soc-link" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.5 6.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" fill="rgba(255,255,255,.45)" stroke="none"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.118 1.534 5.851L.057 23.012a.75.75 0 0 0 .916.945l5.451-1.476A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" fill="rgba(255,255,255,.45)" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Navegação</h5>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#abordagem">Abordagem</a></li>
+        <li><a href="#servicos">Tratamentos</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Contato</h5>
+      <div class="f-contact"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="https://wa.me/5531998283254">(31) 99828-3254</a></div>
+      <div class="f-contact"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><a href="https://instagram.com/" target="_blank">@helenicemoreiraestetica</a></div>
+      <div class="f-contact"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Belo Horizonte, MG</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Helenice Moreira — Dermoterapia Capilar. Todos os direitos reservados.</span>
+    <span>Desenvolvido com excelência</span>
+  </div>
+</footer>
+ 
+<script>
+/* NAV scroll */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+ 
+/* Mobile menu */
+function toggleMob() {
+  const m = document.getElementById('mobMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+ 
+/* Reveal on scroll */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+ 
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const body = item.querySelector('.faq-body');
+  const isOpen = item.classList.contains('open');
+
+  // Close all other FAQs
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-body').style.maxHeight = '0';
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 24 + 'px';
+  }
+}
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+ 
+/* HAIR STRIP — fios crescendo como separador de seção */
+(function() {
+  const strip = document.getElementById('hairStrip');
+  if (!strip) return;
+ 
+  // Inject keyframes
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes hairGrow {
+      0%   { height: 0; opacity: 0; }
+      30%  { opacity: 1; }
+      100% { opacity: 0.9; }
+    }
+  `;
+  document.head.appendChild(style);
+ 
+  const W = Math.ceil(window.innerWidth / 6);
+  const colors = ['#7B1D1D','#9B2C2C','#7B1D1D','#C4965A','#7B1D1D'];
+ 
+  for (let i = 0; i < W; i++) {
+    const s = document.createElement('span');
+    s.className = 'strand-el';
+    const maxH = 18 + Math.random() * 88;
+    const delay = (Math.random() * 2.2).toFixed(2);
+    const dur   = (1.4 + Math.random() * 1.8).toFixed(2);
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const w     = 1.5 + Math.random() * 2.5;
+    const mx    = 1 + Math.floor(Math.random() * 4);
+    s.style.cssText = `
+      width:${w}px;
+      max-height:${maxH}px;
+      height:${maxH}px;
+      margin:0 ${mx}px;
+      opacity:0;
+      background:linear-gradient(to bottom, transparent, ${color});
+      animation: hairGrow ${dur}s ${delay}s cubic-bezier(.16,1,.3,1) both;
+    `;
+    strip.appendChild(s);
+  }
+ 
+  // Trigger re-animation when scrolled into view
+  const stripObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      strip.querySelectorAll('.strand-el').forEach(s => {
+        s.style.animation = 'none';
+        s.offsetHeight; // reflow
+        const delay = (Math.random() * 2.2).toFixed(2);
+        const dur = (1.4 + Math.random() * 1.8).toFixed(2);
+        s.style.animation = `hairGrow ${dur}s ${delay}s cubic-bezier(.16,1,.3,1) both`;
+      });
+    }
+  }, { threshold: 0.3 });
+  stripObs.observe(strip);
+})();
+ 
+/* AUDIO PLAYERS */
+const players = {};
+ 
+function initPlayer(id) {
+  if (players[id]) return;
+  const audio = document.getElementById('audio' + id);
+  players[id] = { audio, playing: false };
+  audio.addEventListener('loadedmetadata', () => {
+    document.getElementById('dur' + id).textContent = fmt(audio.duration);
+  });
+  audio.addEventListener('timeupdate', () => {
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    document.getElementById('fill' + id).style.width = pct + '%';
+    document.getElementById('cur' + id).textContent = fmt(audio.currentTime);
+  });
+  audio.addEventListener('ended', () => {
+    setState(id, false);
+    document.getElementById('fill' + id).style.width = '0%';
+    document.getElementById('cur' + id).textContent = '0:00';
+    audio.currentTime = 0;
+  });
+}
+ 
+function togglePlay(id) {
+  initPlayer(id);
+  // Pause others
+  Object.keys(players).forEach(k => {
+    if (k != id && players[k].playing) { players[k].audio.pause(); setState(k, false); }
+  });
+  if (players[id].playing) {
+    players[id].audio.pause(); setState(id, false);
+  } else {
+    players[id].audio.play().catch(() => {
+      document.getElementById('dur' + id).textContent = '—';
+    });
+    setState(id, true);
+  }
+}
+ 
+function setState(id, playing) {
+  players[id].playing = playing;
+  const btn = document.getElementById('btn' + id);
+  const el  = document.getElementById('player' + id);
+  el.classList.toggle('playing', playing);
+  btn.querySelector('.play-icon').style.display  = playing ? 'none' : 'block';
+  btn.querySelector('.pause-icon').style.display = playing ? 'block' : 'none';
+}
+ 
+function seekAudio(e, id) {
+  initPlayer(id);
+  const a = players[id].audio;
+  if (!a.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  a.currentTime = ((e.clientX - r.left) / r.width) * a.duration;
+}
+ 
+function fmt(s) {
+  if (!s || isNaN(s)) return '0:00';
+  return Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+}
+
+/* WHATSAPP FORM */
+function sendToWA(e) {
+  e.preventDefault();
+  const nome = document.getElementById('fname')?.value.trim();
+  const tel = document.getElementById('fphone')?.value.trim();
+  const queixa = document.getElementById('fqueixa')?.value;
+  if (!nome || !tel || !queixa) return;
+  const msg = `Olá, me chamo ${nome}. Tenho interesse em uma avaliação capilar.\n\nMinha principal queixa é: ${queixa}. Meu telefone para retorno é: ${tel}.\n\nGostaria de entender qual tratamento é mais indicado para meu caso.`;
+  const url = 'https://wa.me/5531998283254?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+/* PHONE MASK */
+(function() {
+  const input = document.getElementById('fphone');
+  if (!input) return;
+  input.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    else if (v.length > 6) v = v.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+    else if (v.length > 2) v = v.replace(/(\d{2})(\d+)/, '($1) $2');
+    this.value = v;
+  });
+})();
+</script>
+</body>
+</html>
+ 

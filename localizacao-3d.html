@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Localização 3D — Helenice Moreira</title>
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!--
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  VERSÃO 3D INTERATIVA (Google Photorealistic 3D Maps)             │
+  │                                                                   │
+  │  Como ativar:                                                     │
+  │  1. Crie um projeto em https://console.cloud.google.com           │
+  │  2. Ative a "Map Tiles API" (e billing — está em preview, sem     │
+  │     custo no momento, mas exige conta de faturamento ativa).      │
+  │  3. Gere uma chave de API e cole abaixo em SUA_CHAVE_API.         │
+  │  4. (Recomendado) Restrinja a chave ao domínio helenicemoreira.   │
+  │     com.br pra ninguém usar sua cota.                             │
+  │                                                                   │
+  │  Coordenadas já apontam pra R. Waldomiro Lobo, 1040 - Guarani.    │
+  │  Ajuste fino: pegue lat,lng exatos no Google Maps (clique no      │
+  │  ponto → copia as coordenadas) e troque em center="...".          │
+  └─────────────────────────────────────────────────────────────────┘
+-->
+<style>
+  html, body { margin: 0; height: 100%; background: #1a0309; font-family: system-ui, sans-serif; }
+  gmp-map-3d { width: 100%; height: 100vh; display: block; }
+  .nokey { color: #E8D5B0; text-align: center; padding: 80px 24px; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  .nokey code { background: rgba(201,169,110,.15); padding: 2px 8px; border-radius: 3px; color: #C9A96E; }
+</style>
+</head>
+<body>
+
+<!-- Coordenadas aproximadas de R. Waldomiro Lobo, 1040 - Guarani, BH.
+     Formato center="LAT,LNG,ALTITUDE_metros" -->
+<gmp-map-3d
+  id="map3d"
+  mode="hybrid"
+  center="-19.8458,-43.9712,560"
+  range="700"
+  tilt="65"
+  heading="40">
+</gmp-map-3d>
+
+<noscript><p class="nokey">Ative o JavaScript para ver o mapa 3D.</p></noscript>
+
+<!-- Substitua SUA_CHAVE_API pela chave do Google Cloud -->
+<script>
+(function(){
+  var KEY = "SUA_CHAVE_API";
+  if (KEY === "SUA_CHAVE_API") {
+    document.body.innerHTML = '<div class="nokey"><h2>Mapa 3D — falta a chave</h2><p>Cole sua chave do Google em <code>SUA_CHAVE_API</code> dentro deste arquivo para ativar a visualização 3D fotorrealista do endereço.</p><p>Enquanto isso, o site usa a versão satélite (que já funciona sem chave) na seção de localização.</p></div>';
+    return;
+  }
+  var s = document.createElement('script');
+  s.src = "https://maps.googleapis.com/maps/api/js?key=" + KEY + "&v=alpha&libraries=maps3d";
+  s.async = true;
+  document.head.appendChild(s);
+
+  // órbita lenta e cinematográfica em volta do endereço
+  s.onload = function(){
+    var map = document.getElementById('map3d');
+    var h = 40;
+    setInterval(function(){
+      h = (h + 0.15) % 360;
+      if (map) map.heading = h;
+    }, 60);
+  };
+})();
+</script>
+</body>
+</html>

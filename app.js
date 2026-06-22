@@ -132,7 +132,7 @@ function sendToWA(e) {
   const phone = document.getElementById('fphone').value.trim();
   const q = document.getElementById('fqueixa').value;
   const msg = encodeURIComponent(`Olá Helenice! Meu nome é ${name} (${phone}). Minha principal queixa: ${q}. Gostaria de agendar uma avaliação.`);
-  window.open(`https://wa.me/5531998283254?text=${msg}`, '_blank');
+  window.open(`https://wa.me/553187640989?text=${msg}`, '_blank');
 }
 
 /* ─── AUDIO PLAYERS ───────────────────────────────── */
